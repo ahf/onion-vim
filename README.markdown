@@ -1,0 +1,51 @@
+Onion Plug-in for Vim
+=====================
+
+This is a Vim plug-in that will hopefully make it easier for you to work with
+the Tor source tree.
+
+Some features includes:
+
+- We introduce the concept of "onion flavored C code" (filetype
+  `onion-c` in Vim) which allows us to specialize syntax highlighting
+  and indentation of various Tor specific details in the code.
+
+- When creating a new C source, C header, or "changes" file we
+  automatically fill out the new file with a somewhat sensible
+  template.
+
+- We enable Doxygen syntax highlighting in onion flavored C code by
+  default.
+
+- We set indentation settings to follow the Tor coding guidelines:
+  spaces instead of tabs, 2 spaces per tab, 1 space indentation for
+  labels, files are 80 characters wide, etc..
+
+## Configuration
+
+- `g:onion_copyright_holder` (Default: `The Tor Project, Inc.`)
+
+  When creating a new file within the Tor source tree we will use this
+  value for generating the correct copyright headers.
+
+- `g:onion_search_file` (Default: `src/or/or.h`):
+
+  This variable is used to detect whether a file belongs to the Tor
+  source tree or not. Once you open a file in Vim a function will be
+  called that either sets the `b:onion_file` variable to `1` or `0`
+  depending on whether the file belongs to the Tor source tree or not.
+
+## Help
+
+Feel free to contact `ahf` in `#tor-dev` on OFTC if you have any questions or
+need help using this plug-in. Suggestions to make the plug-in better are warmly
+welcomed.
+
+## Contributing
+
+Please submit a pull request here on Github. Please remember to add
+yourself to this `README.markdown`'s authors section below.
+
+## Authors
+
+- Alexander Færøy (<ahf@torproject.org>).
