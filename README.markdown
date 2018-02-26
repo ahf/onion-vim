@@ -18,7 +18,7 @@ Some features includes:
 
 ## Configuration
 
-- `g:onion_copyright_holder` (Default: `The Tor Project, Inc.`)
+- `g:onion_copyright_holder` (Default: `The Tor Project, Inc`)
 
   When creating a new file within the Tor source tree we will use this
   value for generating the correct copyright headers.
