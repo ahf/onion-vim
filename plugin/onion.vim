@@ -10,13 +10,13 @@ endif
 
 " Allow users to set the copyright holder for newly generated files. Make TPI
 " the default value.
-if !exists("g:onion_copyright_holder")
+if ! exists('g:onion_copyright_holder')
     let g:onion_copyright_holder = "The Tor Project, Inc"
 endif
 
 " Allow users to specify which file to use for Tor autodetection. Default
 " value is "src/or/or.h".
-if !exists("g:onion_search_file")
+if ! exists('g:onion_search_file')
     let g:onion_search_file = "src/or/or.h"
 endif
 
@@ -32,7 +32,6 @@ function! s:CheckIsTorFile()
 
     while ! filereadable(l:file_dir . "/" . l:target)
         if l:max_depth == 0
-            let b:onion_file = 0
             return
         endif
 
@@ -155,19 +154,19 @@ call s:CheckIsTorFile()
 augroup NewOnionCFile
     au!
     autocmd BufNewFile *.c
-        \ if b:onion_file |
+        \ if exists('b:onion_file') |
         \     call <SID>NewCSourceFile() |
         \ endif
     autocmd BufNewFile *.h
-        \ if b:onion_file |
+        \ if exists('b:onion_file') |
         \     call <SID>NewCHeaderFile() |
         \ endif
     autocmd BufNewFile *.rs
-        \ if b:onion_file |
+        \ if exists('b:onion_file') |
         \     call <SID>NewRustFile() |
         \ endif
     autocmd BufNewFile *
-        \ if b:onion_file |
+        \ if exists('b:onion_file') |
         \     call <SID>NewChangesFile() |
         \ endif
 augroup END

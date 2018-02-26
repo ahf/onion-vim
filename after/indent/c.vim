@@ -8,9 +8,8 @@ if &compatible || v:version < 603
     finish
 endif
 
-if exists("b:did_indent")
+if ! exists('b:onion_file') || exists('b:onion_c_did_indent')
     finish
 endif
 
-runtime! indent/c.vim
-let b:did_indent = 1
+let b:onion_c_did_indent = 1

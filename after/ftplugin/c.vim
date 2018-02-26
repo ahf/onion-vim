@@ -8,7 +8,11 @@ if &compatible || v:version < 603
     finish
 endif
 
-runtime! ftplugin/c.vim
+if ! exists('b:onion_file') || exists('b:onion_c_did_ftplugin')
+    finish
+endif
+
+let b:onion_c_did_ftplugin = 1
 
 " We use spaces instead of tabs.
 setlocal expandtab

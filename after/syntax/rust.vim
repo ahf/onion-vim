@@ -8,11 +8,8 @@ if &compatible || v:version < 603
     finish
 endif
 
-if exists("b:current_syntax")
+if ! exists('b:onion_file') || exists('b:onion_rust_did_syntax')
     finish
 endif
 
-runtime! syntax/c.vim
-runtime! syntax/doxygen.vim
-
-let b:current_syntax = "onion-c"
+let b:onion_rust_did_syntax = 1
