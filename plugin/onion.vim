@@ -99,9 +99,9 @@ function! s:NewCHeaderFile()
     put  =''
     put  ='#ifdef ' . toupper(l:symbolic_name) . '_PRIVATE'
     put  =''
-    put  ='#endif // ' . toupper(l:symbolic_name) . '_PRIVATE.'
+    put  ='#endif /* ' . toupper(l:symbolic_name) . '_PRIVATE */'
     put  =''
-    put  ='#endif // TOR_' . toupper(l:symbolic_name) . '_H.'
+    put  ='#endif /* TOR_' . toupper(l:symbolic_name) . '_H */'
 
     0
 endfunction
