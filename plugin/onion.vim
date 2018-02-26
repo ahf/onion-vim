@@ -20,6 +20,11 @@ if ! exists('g:onion_search_file')
     let g:onion_search_file = "src/or/or.h"
 endif
 
+" Allow users to disable Doxygen syntax highlighting.
+if ! exists('g:onion_disable_doxygen')
+    let g:onion_disable_doxygen = 0
+endif
+
 " Check if a given file belongs to tor.git by trying to find "or.h" in the
 " nearby directories.
 function! s:CheckIsTorFile()

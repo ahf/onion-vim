@@ -14,5 +14,7 @@ endif
 
 let b:onion_c_did_syntax = 1
 
-" Enable Doxygen for tor C files.
-runtime! syntax/doxygen.vim
+if exists('g:onion_disable_doxygen') && ! g:onion_disable_doxygen
+    " Enable Doxygen for tor C files.
+    runtime! syntax/doxygen.vim
+endif

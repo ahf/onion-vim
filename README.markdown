@@ -30,6 +30,11 @@ Some features includes:
   called that either sets the `b:onion_file` variable to `1` or `0`
   depending on whether the file belongs to the Tor source tree or not.
 
+- `g:onion_disable_doxygen` (Default: 0):
+
+  This variable allows you to disable the Doxygen comment highlighting in C
+  source and header files.
+
 ## Rust
 
 If your installed version of Vim doesn't come with support for the Rust
