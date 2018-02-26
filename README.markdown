@@ -18,6 +18,10 @@ Some features includes:
 
 ## Configuration
 
+You can configure this plug-in using the following variables. All of the
+variables can be set in your `~/.vimrc`. For example: `let
+g:onion_copyright_holder = "John Doe"`.
+
 - `g:onion_copyright_holder` (Default: `The Tor Project, Inc`)
 
   When creating a new file within the Tor source tree we will use this
