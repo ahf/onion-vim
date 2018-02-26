@@ -6,11 +6,6 @@ the Tor source tree.
 
 Some features includes:
 
-- We introduce the concept of "onion flavored C code" and "onion
-  flavored Rust code" (filetype `onion-c` and `onion-rust` in Vim) which
-  allows us to specialize syntax highlighting and indentation of various
-  Tor specific details in the code.
-
 - When creating a new Rust, C source, C header, or "changes" file we
   automatically fill out the new file with a somewhat sensible template.
 
