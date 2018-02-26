@@ -6,13 +6,13 @@ the Tor source tree.
 
 Some features includes:
 
-- We introduce the concept of "onion flavored C code" (filetype
-  `onion-c` in Vim) which allows us to specialize syntax highlighting
-  and indentation of various Tor specific details in the code.
+- We introduce the concept of "onion flavored C code" and "onion
+  flavored Rust code" (filetype `onion-c` and `onion-rust` in Vim) which
+  allows us to specialize syntax highlighting and indentation of various
+  Tor specific details in the code.
 
-- When creating a new C source, C header, or "changes" file we
-  automatically fill out the new file with a somewhat sensible
-  template.
+- When creating a new Rust, C source, C header, or "changes" file we
+  automatically fill out the new file with a somewhat sensible template.
 
 - We enable Doxygen syntax highlighting in onion flavored C code by
   default.
@@ -34,6 +34,12 @@ Some features includes:
   source tree or not. Once you open a file in Vim a function will be
   called that either sets the `b:onion_file` variable to `1` or `0`
   depending on whether the file belongs to the Tor source tree or not.
+
+## Rust
+
+If your installed version of Vim doesn't come with support for the Rust
+programming language out of the box you should install the Rust vim
+plug-in from https://github.com/rust-lang/rust.vim
 
 ## Help
 

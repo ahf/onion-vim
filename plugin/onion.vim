@@ -102,6 +102,17 @@ function! s:NewCHeaderFile()
     0
 endfunction
 
+function! s:NewRustFile()
+    let l:year = strftime("%Y")
+
+    put! ='// Copyright (c) ' . l:year . ', ' . g:onion_copyright_holder . '.'
+    put  ='// See LICENSE for licensing information.'
+    put  =''
+    put  ='//! XXX'
+
+    0
+endfunction
+
 function! <SID>NewChangesFile()
     let l:filename  = expand('%:t')
     let l:directory = expand('%:p:h:t')
@@ -150,6 +161,10 @@ augroup NewOnionCFile
     autocmd BufNewFile *.h
         \ if b:onion_file |
         \     call <SID>NewCHeaderFile() |
+        \ endif
+    autocmd BufNewFile *.rs
+        \ if b:onion_file |
+        \     call <SID>NewRustFile() |
         \ endif
     autocmd BufNewFile *
         \ if b:onion_file |
