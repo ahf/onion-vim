@@ -25,6 +25,11 @@ if ! exists('g:onion_disable_doxygen')
     let g:onion_disable_doxygen = 0
 endif
 
+" Allow users to disable spell checking in changes files.
+if ! exists('g:onion_disable_spell_check')
+    let g:onion_disable_spell_check = 0
+endif
+
 " Check if a given file belongs to tor.git by trying to find "or.h" in the
 " nearby directories.
 function! s:CheckIsTorFile()
@@ -147,8 +152,11 @@ function! <SID>NewChangesFile()
     0
 
     " FIXME(ahf): Move these elsewhere?
-    setlocal spell
-    setlocal spelllang=en
+    if exists('g:onion_disable_spell_check') && ! g:onion_disable_spell_check
+        setlocal spell
+        setlocal spelllang=en
+    endif
+
     setlocal textwidth=80
     setlocal nohlsearch
 endfunction

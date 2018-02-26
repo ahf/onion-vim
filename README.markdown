@@ -39,6 +39,11 @@ g:onion_copyright_holder = "John Doe"`.
   This variable allows you to disable the Doxygen comment highlighting in C
   source and header files.
 
+- `g:onion_disable_spell_check` (Default: 0):
+
+  This variable allows you to disable the automatic spell checking that is
+  enabled for Tor's changelog "changes" files.
+
 ## Rust
 
 If your installed version of Vim doesn't come with support for the Rust
