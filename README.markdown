@@ -16,6 +16,8 @@ Some features includes:
   spaces instead of tabs, 2 spaces per tab, 1 space indentation for
   labels, files are 80 characters wide, etc..
 
+- Syntax highlighting and indentation support for Trunnel files.
+
 ## Configuration
 
 You can configure this plug-in using the following variables. All of the
