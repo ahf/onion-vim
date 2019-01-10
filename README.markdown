@@ -27,7 +27,7 @@ g:onion_copyright_holder = "John Doe"`.
   When creating a new file within the Tor source tree we will use this
   value for generating the correct copyright headers.
 
-- `g:onion_search_file` (Default: `src/or/or.h`):
+- `g:onion_search_file` (Default: `["src/core/or/or.h", "src/or/or.h"]`):
 
   This variable is used to detect whether a file belongs to the Tor
   source tree or not. Once you open a file in Vim a function will be

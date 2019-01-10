@@ -1,7 +1,7 @@
 " Vim plugin
 " Language:     Tor plug-in for Vim.
 " Author:       Alexander Færøy <ahf@torproject.org>
-" Copyright:    Copyright (c) 2018 Alexander Færøy
+" Copyright:    Copyright (c) 2018-2019 Alexander Færøy
 " License:      BSD-2-Clause
 
 if &compatible || v:version < 603
@@ -15,9 +15,13 @@ if ! exists('g:onion_copyright_holder')
 endif
 
 " Allow users to specify which file to use for Tor autodetection. Default
-" value is "src/or/or.h".
+" value is "src/core/or/or.h" or "src/or/or.h".
 if ! exists('g:onion_search_file')
-    let g:onion_search_file = "src/or/or.h"
+    " Please consider lowering l:max_depth in CheckIsTorFile() if you add more
+    " values to this list. Make sure you keep the list in order of where it is
+    " most plausible to find or.h in the current Tor master branch: put the
+    " path where it is most likely to find it first :-)
+    let g:onion_search_file = ["src/core/or/or.h", "src/or/or.h"]
 endif
 
 " Allow users to disable Doxygen syntax highlighting.
@@ -40,21 +44,29 @@ endif
 function! s:CheckIsTorFile()
     let l:file_dir = expand('%:p:h')
 
-    " This function checks if a given file is part of the Tor filebase by
+    " This function checks if a given file is part of the Tor source tree by
     " trying to find the "or.h" file.
-    let l:target = g:onion_search_file
-    let l:max_depth = 5
+    for l:target in g:onion_search_file
+        let l:max_depth = 5
+        let l:found = 0
 
-    while ! filereadable(l:file_dir . "/" . l:target)
-        if l:max_depth == 0
-            return
+        while ! l:found
+            let l:found = filereadable(l:file_dir . "/" . l:target)
+
+            if l:found || l:max_depth == 0
+                break
+            endif
+
+            let l:target = "../" . l:target
+            let l:max_depth = l:max_depth - 1
+        endwhile
+
+        if l:found
+            break
         endif
+    endfor
 
-        let l:target = "../" . l:target
-        let l:max_depth = l:max_depth - 1
-    endwhile
-
-    let b:onion_file = 1
+    let b:onion_file = l:found
 endfunction
 
 function! s:NewCSourceFile()
