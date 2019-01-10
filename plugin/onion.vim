@@ -17,7 +17,7 @@ endif
 " Allow users to specify which file to use for Tor autodetection. Default
 " value is "src/core/or/or.h" or "src/or/or.h".
 if ! exists('g:onion_search_file')
-    " Please consider lowering l:max_depth in CheckIsTorFile() if you add more
+    " Please consider lowering l:max_depth in IsOnionFile() if you add more
     " values to this list. Make sure you keep the list in order of where it is
     " most plausible to find or.h in the current Tor master branch: put the
     " path where it is most likely to find it first :-)
@@ -41,7 +41,11 @@ endif
 
 " Check if a given file belongs to tor.git by trying to find "or.h" in the
 " nearby directories.
-function! s:CheckIsTorFile()
+function! onion#IsOnionFile()
+    if exists('b:onion_file')
+        return b:onion_file
+    endif
+
     let l:file_dir = expand('%:p:h')
 
     " This function checks if a given file is part of the Tor source tree by
@@ -67,6 +71,7 @@ function! s:CheckIsTorFile()
     endfor
 
     let b:onion_file = l:found
+    return b:onion_file
 endfunction
 
 function! s:NewCSourceFile()
@@ -179,7 +184,7 @@ function! <SID>NewChangesFile()
 endfunction
 
 " Sets b:onion_file - should be run before anything else.
-call s:CheckIsTorFile()
+call onion#IsOnionFile()
 
 augroup NewOnionCFile
     au!
