@@ -11,11 +11,9 @@ endif
 " Make sure our Onion file check have run.
 call onion#IsOnionFile()
 
-if ! exists('b:onion_file') || exists('b:onion_c_did_syntax')
+if ! exists('b:onion_file')
     finish
 endif
-
-let b:onion_c_did_syntax = 1
 
 if exists('g:onion_disable_doxygen') && ! g:onion_disable_doxygen
     " Enable Doxygen for tor C files.

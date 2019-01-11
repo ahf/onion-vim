@@ -11,8 +11,6 @@ endif
 " Make sure our Onion file check have run.
 call onion#IsOnionFile()
 
-if ! exists('b:onion_file') || exists('b:onion_rust_did_syntax')
+if ! exists('b:onion_file')
     finish
 endif
-
-let b:onion_rust_did_syntax = 1
