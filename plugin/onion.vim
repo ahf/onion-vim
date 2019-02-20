@@ -183,9 +183,6 @@ function! <SID>NewChangesFile()
     setlocal nohlsearch
 endfunction
 
-" Sets b:onion_file - should be run before anything else.
-call onion#IsOnionFile()
-
 augroup NewOnionCFile
     au!
     autocmd BufNewFile *.c
