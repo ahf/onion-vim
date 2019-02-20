@@ -183,22 +183,22 @@ function! <SID>NewChangesFile()
     setlocal nohlsearch
 endfunction
 
-augroup NewOnionCFile
+augroup NewOnionFile
     au!
     autocmd BufNewFile *.c
-        \ if exists('b:onion_file') && b:onion_file |
+        \ if onion#IsOnionFile() |
         \     call <SID>NewCSourceFile() |
         \ endif
     autocmd BufNewFile *.h
-        \ if exists('b:onion_file') && b:onion_file |
+        \ if onion#IsOnionFile() |
         \     call <SID>NewCHeaderFile() |
         \ endif
     autocmd BufNewFile *.rs
-        \ if exists('b:onion_file') && b:onion_file |
+        \ if onion#IsOnionFile() |
         \     call <SID>NewRustFile() |
         \ endif
     autocmd BufNewFile *
-        \ if exists('b:onion_file') && b:onion_file |
+        \ if onion#IsOnionFile() |
         \     call <SID>NewChangesFile() |
         \ endif
 augroup END
