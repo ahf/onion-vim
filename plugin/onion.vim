@@ -189,19 +189,19 @@ call onion#IsOnionFile()
 augroup NewOnionCFile
     au!
     autocmd BufNewFile *.c
-        \ if exists('b:onion_file') |
+        \ if exists('b:onion_file') && b:onion_file |
         \     call <SID>NewCSourceFile() |
         \ endif
     autocmd BufNewFile *.h
-        \ if exists('b:onion_file') |
+        \ if exists('b:onion_file') && b:onion_file |
         \     call <SID>NewCHeaderFile() |
         \ endif
     autocmd BufNewFile *.rs
-        \ if exists('b:onion_file') |
+        \ if exists('b:onion_file') && b:onion_file |
         \     call <SID>NewRustFile() |
         \ endif
     autocmd BufNewFile *
-        \ if exists('b:onion_file') |
+        \ if exists('b:onion_file') && b:onion_file |
         \     call <SID>NewChangesFile() |
         \ endif
 augroup END
