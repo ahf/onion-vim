@@ -9,9 +9,11 @@ if &compatible || v:version < 603
 endif
 
 " Make sure our Onion file check have run.
-call onion#IsOnionFile()
+if ! onion#IsOnionFile()
+    finish
+endif
 
-if ! exists('b:onion_file') || exists('b:onion_c_did_indent')
+if exists('b:onion_c_did_indent')
     finish
 endif
 
