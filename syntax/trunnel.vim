@@ -17,7 +17,7 @@ runtime! syntax/c.vim
 unlet b:current_syntax
 
 " Trunnel extensions to C.
-syn keyword TrunnelStatements IN with
+syn keyword TrunnelStatements IN with ignore
 syn keyword TrunnelType u8 u16 u32 u64 nulterm eos
 
 hi def link TrunnelStatements Statement
